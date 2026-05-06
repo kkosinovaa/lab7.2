@@ -21,9 +21,9 @@ export default function InventoryTable({ items, onDelete }) {
                     <td><strong>{item.name}</strong></td>
                     <td>{item.description}</td>
                     <td>
-                        <Link to={`/details/${item.id}`} style={{ marginRight: '10px' }}>👁️ Перегляд</Link>
-                        <Link to={`/edit/${item.id}`} style={{ marginRight: '10px' }}>✏️ Редаг.</Link>
-                        <button onClick={() => onDelete(item)}>🗑️ Видал.</button>
+                        <Link to={`/details/${item.id}`} style={{ marginRight: '10px' }}> Перегляд</Link>
+                        <Link to={`/edit/${item.id}`} style={{ marginRight: '10px' }}> Редаг.</Link>
+                        <button onClick={() => onDelete(item)}>Видал.</button>
                     </td>
                 </tr>
             ))}

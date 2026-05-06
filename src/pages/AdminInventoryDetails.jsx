@@ -12,7 +12,7 @@ export default function AdminInventoryDetails() {
 
     return (
         <div>
-            <button onClick={() => navigate('/')}>← Назад</button>
+            <button onClick={() => navigate('/')}>Назад</button>
             <h1>{item.name}</h1>
             <p><strong>Опис:</strong> {item.description}</p>
             {item.imageUrl && (
