@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { inventoryApi } from '../services/inventoryApi';
+import { fetchInventory } from '../services/inventoryApi';
 import { InventoryCard } from '../components/gallery/InventoryCard';
 import { InventoryQuickView } from '../components/gallery/InventoryQuickView';
 import { useFavorites } from '../hooks/useFavorites';
@@ -12,15 +12,20 @@ export default function Gallery() {
     const { toggleFavorite, isFavorite } = useFavorites();
 
     useEffect(() => {
-        inventoryApi.getAll()
-            .then(res => setItems(res.data))
-            .catch(() => setError(true))
+        fetchInventory()
+            .then(data => {
+                setItems(data);
+            })
+            .catch((err) => {
+                console.error(err);
+                setError(true);
+            })
             .finally(() => setLoading(false));
     }, []);
 
-    if (loading) return <div className="skeleton-container"><div className="skeleton"></div><div className="skeleton"></div><div className="skeleton"></div></div>; // Skeleton loading [cite: 160]
-    if (error) return <div className="empty-state">Помилка завантаження даних (Error State)</div>; // Error state [cite: 161]
-    if (items.length === 0) return <div className="empty-state">Галерея порожня (Empty State)</div>; // Empty state [cite: 161]
+    if (loading) return <div className="skeleton-container"><div className="skeleton"></div><div className="skeleton"></div><div className="skeleton"></div></div>;
+    if (error) return <div className="empty-state">Помилка завантаження даних</div>;
+    if (items.length === 0) return <div className="empty-state">Галерея порожня</div>;
 
     return (
         <div className="gallery-page">

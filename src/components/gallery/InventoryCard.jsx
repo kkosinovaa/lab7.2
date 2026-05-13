@@ -1,15 +1,15 @@
 import React from 'react';
 
 export const InventoryCard = ({ item, onClick, isFav, onToggleFav }) => {
-    const photoUrl = item.photo ? `http://localhost:5000${item.photo}` : 'https://via.placeholder.com/300x200?text=No+Image';
+    const photoUrl = item.imageUrl ? item.imageUrl : 'https://via.placeholder.com/300x200?text=No+Image';
 
     return (
         <div className="card">
             <div className="card-image-wrapper" onClick={() => onClick(item)}>
-                <img src={photoUrl} alt={item.inventory_name} className="card-image" />
+                <img src={photoUrl} alt={item.name} className="card-image" />
             </div>
             <div className="card-content">
-                <h3 className="card-title">{item.inventory_name}</h3>
+                <h3 className="card-title">{item.name}</h3>
                 <button
                     className={`fav-btn ${isFav ? 'active' : ''}`}
                     onClick={(e) => {
