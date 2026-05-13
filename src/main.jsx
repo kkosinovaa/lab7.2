@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import { InventoryProvider } from './store/InventoryContext';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App.jsx';
+import { InventoryProvider } from './store/InventoryContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <InventoryProvider>
-            <App />
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
         </InventoryProvider>
     </React.StrictMode>
 );
